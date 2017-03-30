@@ -42,7 +42,7 @@ if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 $ips = explode (", ", $_SERVER['HTTP_X_FORWARDED_FOR']);
 if ($ip) { array_unshift($ips, $ip); $ip = FALSE; }
 for ($i = 0; $i < count($ips); $i++) {
-if (!eregi ("^(10|172\.16|192\.168)\.", $ips[$i])) {
+if (!preg_match ("^(10|172\.16|192\.168)\.", $ips[$i])) {
 $ip = $ips[$i];
 break;
 }
